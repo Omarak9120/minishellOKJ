@@ -18,7 +18,7 @@ void	append2(t_tokens **tmp, char *data, int type)
 
 	new_node = NULL;
 	if ((*tmp)->id == TOKEN_SPACE && type == TOKEN_SPACE)
-		return ;
+		return ; //for double space
 	if (((*tmp)->id == TOKEN_COMMAND || (*tmp)->id == TOKEN_WORD)
 		&& (type == TOKEN_WORD || type == TOKEN_COMMAND))
 		(*tmp)->content = ft_strjoingnl((*tmp)->content, data);
@@ -44,7 +44,8 @@ void	append(t_tokens **cmds, char *data, int type)
 	new_node = NULL;
 	if ((!ft_strcmp(data, "\'\'") || !ft_strcmp(data, "\"\""))
 		&& ft_strlen(data) == 2)
-		return ;
+		printf("Command %s not found\n",data);
+
 	if (*cmds == NULL)
 	{
 		new_node = newnode(data, type);
