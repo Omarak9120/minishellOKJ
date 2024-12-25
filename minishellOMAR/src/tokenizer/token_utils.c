@@ -6,7 +6,7 @@
 /*   By: oabdelka <oabdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 02:21:45 by odib              #+#    #+#             */
-/*   Updated: 2024/12/24 12:45:41 by oabdelka         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:10:04 by oabdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,17 @@ void	inittk(char *input, t_tk *tk, t_data *data)
 	tk->buffer = ft_calloc(ft_strlen(input) + 1, sizeof(char));
 }
 
-void	printcmds(t_data *data)
-{
-	t_tokens	*tmp;
-	const char	*type_names[] = {"DEFID", "WORD", "INFILE", "OUTFILE",
-		"HEREDOC", "OUTAPPEND", "COMMAND", "OPERATOR", "PIPE", "SPACE",
-		"FILE"};
+// void	printcmds(t_data *data)
+// {
+// 	t_tokens	*tmp;
+// 	const char	*type_names[] = {"DEFID", "WORD", "INFILE", "OUTFILE",
+// 		"HEREDOC", "OUTAPPEND", "COMMAND", "OPERATOR", "PIPE", "SPACE",
+// 		"FILE"};
 
-	tmp = data->cmdchain;
-	while (tmp != NULL)
-	{
-		printf("[%s] %s\n", type_names[tmp->id], tmp->content);
-		tmp = tmp->next;
-	}
-}
+// 	tmp = data->cmdchain;
+// 	while (tmp != NULL)
+// 	{
+// 		printf("[%s] %s\n", type_names[tmp->id], tmp->content);
+// 		tmp = tmp->next;
+// 	}
+// }

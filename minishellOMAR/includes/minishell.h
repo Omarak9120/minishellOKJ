@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmourtab <zakariamourtaban@gmail.com>      +#+  +:+       +#+        */
+/*   By: oabdelka <oabdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:15:38 by zmourtab          #+#    #+#             */
-/*   Updated: 2024/09/05 20:25:13 by zmourtab         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:09:59 by oabdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,7 @@ void					handleerrpipe(t_data *data, t_tokens **tmp,
 
 t_tokens				*newnode(char *data, int type);
 void					append(t_tokens **cmds, char *data, int type);
-void					printcmds(t_data *data);
+// void					printcmds(t_data *data);
 t_token					get_delimiter_type(char *str);
 void					inittk(char *input, t_tk *tk, t_data *data);
 void					tk_quote(char *input, t_tk *tk, t_data *data);

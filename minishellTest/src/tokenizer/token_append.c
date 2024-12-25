@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_utils.c                                      :+:      :+:    :+:   */
+/*   token_append.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjamil <mjamil@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oabdelka <oabdelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 20:30:08 by mjamil            #+#    #+#             */
-/*   Updated: 2024/12/24 20:36:35 by mjamil           ###   ########.fr       */
+/*   Created: 2024/12/25 16:27:12 by oabdelka          #+#    #+#             */
+/*   Updated: 2024/12/25 16:27:13 by oabdelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,45 +77,33 @@ void	append(t_tokens **cmds, char *data, int type)
 			}
 }
 
-t_token	get_delimiter_type(char *str)
+t_tokens	*newnode(char *data, int type)
 {
-	if (ft_strcmp(str, " ") == 0)
-		return (TOKEN_SPACE);
-	else if (ft_strcmp(str, "<<") == 0)
-		return (TOKEN_HEREDOC_EOF);
-	else if (ft_strcmp(str, ">>") == 0)
-		return (TOKEN_OUT_A_FILE);
-	else if (ft_strcmp(str, "<") == 0)
-		return (TOKEN_IN_FILE);
-	else if (ft_strcmp(str, ">") == 0)
-		return (TOKEN_OUT_FILE);
-	else if (ft_strcmp(str, "|") == 0)
-		return (TOKEN_PIPE);
-	return (TOKEN_WORD);
-}
+	t_tokens	*ptr;
 
-void	inittk(char *input, t_tk *tk, t_data *data)
-{
-	tk->i = 0;
-	tk->buf_i = 0;
-	tk->quote = 0;
-	tk->last_was_space = 0;
-	tk->foundcmd = 0;
-	data->cmdchain = NULL;
-	tk->buffer = ft_calloc(ft_strlen(input) + 1, sizeof(char));
-}
-
-void	printcmds(t_data *data)
-{
-	t_tokens	*tmp;
-	const char	*type_names[] = {"DEFID", "WORD", "INFILE", "OUTFILE",
-		"HEREDOC", "OUTAPPEND", "COMMAND", "OPERATOR", "PIPE", "SPACE",
-		"FILE"};
-
-	tmp = data->cmdchain;
-	while (tmp != NULL)
+	ptr = malloc(sizeof(t_tokens));
+	if (ptr == NULL)
+		return (NULL);
+	ptr->content = ft_strdup(data);
+	if (ptr->content == NULL)
 	{
-		printf("[%s] %s\n", type_names[tmp->id], tmp->content);
-		tmp = tmp->next;
+		free(ptr);
+		return (NULL);
 	}
+	ptr->id = type;
+	ptr->next = NULL;
+	ptr->previous = NULL;
+	ptr->error = 0;
+	return (ptr);
 }
+
+void	addnode(t_tokens **tmp, char *data, int type)
+{
+	t_tokens	*new_node;
+
+	new_node = newnode(data, type);
+	new_node->error = 0;
+	(*tmp)->next = new_node;
+	new_node->previous = (*tmp);
+}
+

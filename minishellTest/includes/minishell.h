@@ -244,7 +244,7 @@ void					handleerrpipe(t_data *data, t_tokens **tmp,
 /* ------------------------------ Tokenizer ---------------------------------- */
 t_tokens				*newnode(char *data, int type);
 void					append(t_tokens **cmds, char *data, int type);
-void					printcmds(t_data *data);
+// void					printcmds(t_data *data);
 t_token					get_delimiter_type(char *str);
 void					inittk(char *input, t_tk *tk, t_data *data);
 void					tk_quote(char *input, t_tk *tk, t_data *data);
