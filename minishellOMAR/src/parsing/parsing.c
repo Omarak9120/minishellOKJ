@@ -35,7 +35,8 @@ t_tokens	*handle_out_file_token(t_tokens *tmp, t_command *current_cmd,
 	}
 	return (nexttoken(tmp));
 }
-
+/*ba3ml initialize lal command list bl awwal w btkoun null, ba3den kl ma le2i word aw command token
+*/
 t_command	*initialize_command_list(t_tokens *tokens)
 {
 	t_command	*current_cmd;
@@ -64,7 +65,7 @@ void	process_token(t_tokens **tmp, t_command **cmd_list,
 	if (*tmp != NULL)
 		*tmp = (*tmp)->next;
 }
-
+/*loop through the tokens list and apply the process_token() for each token*/
 void	process_tokens_loop(t_tokens *tokens, t_command **cmd_list,
 		t_command **current_cmd)
 {
@@ -76,7 +77,9 @@ void	process_tokens_loop(t_tokens *tokens, t_command **cmd_list,
 		process_token(&tmp, cmd_list, current_cmd);
 	}
 }
-
+/*main parsing function, takes the tokens list lli n3amlt bl tokenizer, and creates the command list
+shouf l attrb te3on l command bl header file...
+*/
 t_command	*parse_tokens(t_tokens *tokens)
 {
 	t_command	*cmd_list;

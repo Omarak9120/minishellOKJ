@@ -30,7 +30,8 @@ t_tokens	*getnextspace(t_tokens *token)
 		tmp = tmp->next;
 	return (tmp);
 }
-
+/*men3ayyetla lamma l token tkon word or command, eza l command null bta3ml creat la command node,
+else bta3ml append lal content te3 l token bl list of agrs te3 l command using add_argument()*/
 void	handle_word_command_token(t_tokens *tmp, t_command **current_cmd)
 {
 	if (!(*current_cmd))
