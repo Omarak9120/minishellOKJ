@@ -90,7 +90,7 @@ int	set_export_variable(t_env **env_list, char *arg)
 		return (free_resources(key, value), -1);
 	if (value == NULL)
 	{
-		if (set_env(env_list, key, value, 1) != 0)
+		if (set_env(env_list, key, NULL, 1) != 0)
 			return (free_resources(key, value), -1);
 	}
 	else
@@ -123,9 +123,8 @@ int	export_command(t_env **env_list, t_arg *arg)
 			ft_putstr_fd(tmparg->arg, STDERR_FILENO);
 			ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
 			status = 1;
-			break ;
 		}
-		if (set_export_variable(env_list, tmparg->arg) != 0)
+		else if (set_export_variable(env_list, tmparg->arg) != 0)
 			status = 1;
 		tmparg = tmparg->next;
 	}
